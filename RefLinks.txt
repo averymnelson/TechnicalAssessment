@@ -1,0 +1,8 @@
+Links in posting:
+- https://czerotoday.notion.site/Technical-Assessment-cc5f624c821249d7917a81f112f1e043
+- https://strawberry.rocks/
+- https://fastapi.tiangolo.com/
+- https://atheros.ai/blog/graphql-best-practices-for-graphql-schema-design
+- https://www.apollographql.com/blog/graphql/basics/designing-your-first-graphql-schema/
+- https://graphql.org/learn/thinking-in-graphs/
+- https://art049.github.io/odmantic/engine/#creating-the-engine

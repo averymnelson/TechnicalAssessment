@@ -1,0 +1,15 @@
+You have find a weather api provider. Please use google to find the best one.
+## Expected Queries and Mutations
+Your GraphQL API should have a few queries:
+- 1 query for weather where you input a city and date, output should be data on temp and humidity by time. Bonus: thoughtful about picking the data type for the output
+- 1 mutation for saving your favorite
+- 1 query for getting weather from your fav locations
+## Have ready before the technical interview
+- Demo it
+- Use tools like insomnia to make GraphQL calls
+Delivery:
+- in a github repo
+- I will be reading your commits 👀
+datastore:
+- in memory (dictionary)
+- bonus: mongo
