@@ -39,7 +39,7 @@ class Favorites:
 @strawberry.type
 class Query:
     city: str
-    cities: typing.List[Weather] = strawberry.field(resolver=get_weather(city))
+    cities: typing.List[Weather] = strawberry.field(resolver=get_weather)
 
 @strawberry.type
 class Mutation:
@@ -51,3 +51,9 @@ class Mutation:
 @strawberry.type
 class CheckFav:
     cities: typing.List[Weather] = strawberry.field(resolver=get_weather)
+
+schema = strawberry.Schema(Query, Mutation, CheckFav)
+graphql_app = GraphQLRouter(schema)
+
+app=FastAPI()
+app.include_router(graphql_app, prefix="/graphql")

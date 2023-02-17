@@ -3,8 +3,7 @@ import pytest
 import strawberry
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from .app import Query, Mutation, CheckFav
-from .__init__ import schema
+from app import Query, Mutation, CheckFav, app, schema
 
 @pytest.mark.asyncio
 async def test_query_async():
