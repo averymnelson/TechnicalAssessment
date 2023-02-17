@@ -1,0 +1,26 @@
+type City {
+    city: String!
+}
+
+type Weather {
+    city: String!
+    tempK: Float!
+    tempF: Float!
+    humidity: Float!
+}
+
+type Favorites {
+    city: String!
+}
+
+type Query {
+    get_weather(city: String!): Weather
+}
+
+type Mutation {
+    add_fav(city: String!): Favorites
+}
+
+type CheckFav {
+    get_weather(city: String!): Weather
+}
