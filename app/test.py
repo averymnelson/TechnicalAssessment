@@ -1,37 +1,22 @@
-def test_city():
+def test_query():
     query = """
-        query TestCity($title: String!) {
-            weather(title: $title) {
-                city
+        query TestQuery($title: String!) {
+            books(title: $title) {
+                title
+                author
             }
         }
     """
 
-    result = main.execute_sync(
+    result = schema.execute_sync(
         query,
-        variable_values={"city": "Florence"},
+        variable_values={"title": "The Great Gatsby"},
     )
 
     assert result.errors is None
-    
-@pytest.mark.asyncio
-async def test_mutation():
-    mutation = """
-        mutation TestMutation($title: String!, $author: String!) {
-            addFavorite(title: $title, author: $author) {
-                city
-            }
+    assert result.data["books"] == [
+        {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
         }
-    """
-
-    resp = await main.execute(
-        mutation,
-        variable_values={
-            "city": "Florence",
-        },
-    )
-
-    assert resp.errors is None
-    assert resp.data["addFavorite"] == {
-        "city": "Florence",
-    }
+    ]
