@@ -5,6 +5,7 @@ import requests
 
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
+from fastapi.testclient import TestClient
 
 def get_weather(root, city: str):
         base = "https://api.openweathermap.org/data/2.5/weather?"
@@ -37,10 +38,12 @@ class Favorites:
 #come back to check query, feels convoluted
 @strawberry.type
 class Query:
-    cities: typing.List[Weather] = strawberry.field(resolver=get_weather)
+    city: str
+    cities: typing.List[Weather] = strawberry.field(resolver=get_weather(city))
 
 @strawberry.type
 class Mutation:
+    city: str
     @strawberry.field
     def add_fav(self, city: str) -> Favorites:
         ...
@@ -48,9 +51,3 @@ class Mutation:
 @strawberry.type
 class CheckFav:
     cities: typing.List[Weather] = strawberry.field(resolver=get_weather)
-
-schema = strawberry.Schema(Query)
-graphql_app = GraphQLRouter(schema)
-
-app=FastAPI()
-app.include_router(graphql_app, prefix="/graphql")
